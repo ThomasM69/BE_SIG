@@ -14,19 +14,13 @@ router.get('/', (req, res) => {
 // Pour la table UE
 router.get('/ue', ueController.getAllUe);
 router.get('/ue/:id', ueController.getOneUe);
-router.post('/ue', ueController.createUe);
+router.post('/ue/', ueController.createUe);
 router.patch('/ue/:id', ueController.modifyUe);
-router.put('/ue/:id?', ueController.createOrModify);
-router.delete('/ue/:id', ueController.deleteUe);
 
 // Pour la table relations
 router.get('/relation', relationController.getAllRelation);
-router.get('/relation/:id', relationController.getOneRelation);
 router.post('/relation', relationController.createRelation);
 router.patch('/relation/:id', relationController.modifyRelation);
-router.put('/relation/:id?', relationController.createOrModify);
-router.delete('/relation/:id', relationController.deleteRelation);
-router.post('/UE/:id/relation', relationController.associateRelationToUe);
 
 router.use((req, res) => {
   res.status(404).send('Existe pas');
