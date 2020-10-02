@@ -30,6 +30,7 @@ const ueController = {
   },
 
   createUe: async (req, res) => {
+    console.log(req);
     try {
       const { id, classe } = req.body;
       // test présence paramètres
@@ -40,7 +41,7 @@ const ueController = {
       if (!classe) {
         bodyErrors.push('classe pas vide');
       }
-      if (bodyErrors) {
+      if (bodyErrors.length > 0) {
         // si on a une erreur
         res.status(400).json(bodyErrors);
       } else {
