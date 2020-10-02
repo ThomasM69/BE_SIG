@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require("body-parser");
 
 // importer les controllers
 const ueController = require('./controllers/ueController');
@@ -6,6 +7,8 @@ const relationController = require('./controllers/relationController');
 
 //Construction des differents routers
 const router = express.Router();
+
+router.use(bodyParser.json());
 
 router.get('/', (req, res) => {
   res.send('OK !');
