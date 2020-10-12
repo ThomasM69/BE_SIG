@@ -32,22 +32,30 @@ const ueController = {
   createUe: async (req, res) => {
     console.log(req);
     try {
-      const { id, classe } = req.body;
+      const { id_ue, classe, type, designation, description, interpretation, secteur } = req.body;
       // test présence paramètres
       const bodyErrors = [];
-      if (!id) {
-        bodyErrors.push('id pas vide');
+      if (!id_ue) {
+        bodyErrors.push('id ne peut être pas vide');
       }
       if (!classe) {
-        bodyErrors.push('classe pas vide');
+        bodyErrors.push('classe ne peut être pas vide');
+      }
+      if (!type) {
+        bodyErrors.push('type ne peut être pas vide');
       }
       if (bodyErrors.length > 0) {
         // si on a une erreur
         res.status(400).json(bodyErrors);
       } else {
         let newUe = UE.build({
-          id,
-          classe
+          id_ue,
+          classe,
+          type,
+          designation,
+          description,
+          interpretation,
+          secteur
         });
         await newUe.save();
         res.json(newUe);
