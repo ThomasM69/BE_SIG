@@ -26,7 +26,7 @@ router.post('/relation', relationController.createRelation);
 router.patch('/relation/:id', relationController.modifyRelation);
 
 router.use((req, res) => {
-  res.status(404).send('Existe pas');
+  res.status(404).send('l ID n existe pas');
 });
 
 module.exports = router;
